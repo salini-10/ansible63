@@ -1,3 +1,12 @@
-- name: print catalogue
-  ansible.builtin.debug:
-    msg: this is catalogue component
+- name: configure yum repos
+  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+- name: Install nodejs
+  ansible.builtin.yum:
+    name:
+     - nodejs
+     - gcc-c++
+    state: installed
+- name: add application user
+  ansible.builtin.user:
+    name: roboshop
+    comment: Roboshop project Application User
