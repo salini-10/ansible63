@@ -1,0 +1,6 @@
+[FRONTEND]
+172.31.10.55
+[MONGODB]
+newmongodb.roboshop.internal
+[CATALOGUE]
+catalogue.roboshop.internal

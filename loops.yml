@@ -1,0 +1,20 @@
+- name: demo on loops
+  hosts: localhost
+  tasks:
+  - name: print fruit name
+    ansible.builtin.debug:
+     msg: name of fruit = {{item}}
+    loop:
+     - apple
+     - banana
+     - jack fruit
+     - mango
+  - name: print fruit name and inventory count
+    ansible.builtin.debug:
+      msg: fruit name = {{item.name}}, Availabile count = {{item.count}}
+    loop:
+     - {name: apple, count: 10}
+     - {name: banana, count: 20}
+     - {name: jackfruit, count: 30}
+     - {name: mango, count: 30}
+

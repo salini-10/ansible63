@@ -1,0 +1,46 @@
+- name: Play level variables
+  hosts: all
+  vars:
+    URL: playexample.com
+  tasks:
+    - name: print URL
+      ansible.builtin.debug:
+        msg: the URL is {{URL}}
+- name: playlevel variables from a file
+  hosts: all
+  vars_files:
+    - samplevars.yml
+  tasks:
+    - name: print url from a file
+      ansible.builtin.debug:
+        msg: print URL is {{URL}}
+
+- name: task level variables
+  hosts: all
+  tasks:
+    - name: print url
+      ansible.builtin.debug:
+       msg: the url is {{URL}}
+      vars:
+        URL: hosts.example.com
+- name: Fact Variable
+  hosts: all
+  tasks:
+    - name: print host name
+      ansible.builtin.debug:
+        msg: Architecture = {{ansible_architecture}}, IP address = {{ansible_eth0.ipv4.address}}
+
+- name: work with register variable
+  hosts: all
+  tasks:
+    - name: run a shellcommand
+      ansible.builtin.shell: uptime
+      register: OUT
+    - name: set a fact
+      ansible.builtin.set_fact:
+        OUTPUT: "{{OUT.stdout}}"
+
+    - name: printing output of shellcommand
+      ansible.builtin.debug:
+        msg: "{{OUTPUT}}"
+
