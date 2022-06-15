@@ -6,3 +6,5 @@ newmongodb.roboshop.internal
 catalogue.roboshop.internal
 [REDIS]
 redisansible.roboshop.internal
+[USER]
+newusera.roboshop.internal
