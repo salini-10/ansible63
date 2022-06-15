@@ -7,5 +7,5 @@ catalogue.roboshop.internal
 [REDIS]
 redisansible.roboshop.internal
 [USER]
-useransible.roboshop.internal
+user.roboshop.internal
 
