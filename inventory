@@ -4,3 +4,5 @@
 newmongodb.roboshop.internal
 [CATALOGUE]
 catalogue.roboshop.internal
+[REDIS]
+redisansible.roboshop.internal
