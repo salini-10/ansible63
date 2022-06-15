@@ -1,42 +1,5 @@
-- name: configure yum repos
-  ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
-- name: Install nodejs
-  ansible.builtin.yum:
-    name:
-     - nodejs
-     - gcc-c++
-    state: installed
-- name: add application user
-  ansible.builtin.user:
-    name: roboshop
-    comment: Roboshop project Application User
-- name: Download and extract nginx
+- name: Nodejs app setup
   include_role:
     name: common
-    tasks_from: download
-- name: clean up old content
-  ansible.builtin.file:
-    path: /home/roboshop/catalogue
-    state: absent
-- name: copy app content
-  ansible.builtin.copy:
-    src: /tmp/catalogue-main/
-    dest: /home/roboshop/catalogue
-    remote_src: yes
-  become_user: roboshop
-- name: install node js dependencies
-  community.general.npm:
-    path: /home/roboshop/catalogue
-  become_user: roboshop
-- name: copy systemD file
-  ansible.builtin.copy:
-    src: systemd.service
-    dest: /etc/systemd/system/catalogue.service
-- name: start catalogue service
-  ansible.builtin.systemd:
-    name: catalogue
-    state: restarted
-    enabled: yes
-    daemon_reload: yes
-
+    tasks_from: nodejs
 
