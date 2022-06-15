@@ -3,7 +3,7 @@ Description = User Service
 [Service]
 User=roboshop
 Environment=REDIS_HOST=redisansible.roboshop.internal
-Environment=MONGO_URL="newmongodb.roboshop.internal://:27017/users"
+Environment=MONGO_URL="mongodb://newmongodb.roboshop.internal:27017/users"
 ExecStart=/bin/node /home/roboshop/user/server.js
 SyslogIdentifier=user
 
